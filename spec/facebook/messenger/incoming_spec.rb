@@ -163,5 +163,29 @@ describe Facebook::Messenger::Incoming do
         )
       end
     end
+
+    context 'when the payload is a pass' do
+      let :payload do
+        {
+            'sender' => {
+                'id' => '3'
+            },
+            'recipient' => {
+                'id' => '3'
+            },
+            'timestamp' => 1458692752478,
+            'pass_thread_control' => {
+                'new_owner_app_id' => '123456789',
+                'metadata' => 'Additional content that the caller wants to set'
+            }
+        }
+      end
+
+      it 'returns an Incoming::PassThreadControl' do
+        expect(subject.parse(payload)).to be_a(
+          Facebook::Messenger::Incoming::PassThreadControl
+        )
+      end
+    end
   end
 end
