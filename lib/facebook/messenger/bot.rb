@@ -82,7 +82,7 @@ module Facebook
         #
         # @return pass event and object of callback class to trigger function.
         #
-        def receive(payload, attr)
+        def receive(payload, attr={})
           standy = attr.fetch(:standy, false)
           callback = Facebook::Messenger::Incoming.parse(payload)
           event = Facebook::Messenger::Incoming::EVENTS.invert[callback.class]
