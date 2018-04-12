@@ -168,7 +168,7 @@ module Facebook
           end
           if entry['standby'.freeze]
             entry['standby'.freeze].each do |messaging|
-              Facebook::Messenger::Bot.receive(messaging, standy: true)
+              Facebook::Messenger::Bot.receive(messaging, standby: true)
             end
           end
         end
